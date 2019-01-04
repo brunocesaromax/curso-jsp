@@ -13,7 +13,12 @@
 <body>
 
 <!-- Passagem de parâmetros de uma tela para outra -->
-<%="Nome recebido: "+request.getParameter("nome") %>
+<%="Nome recebido: " + request.getParameter("nome") %>
+
+<br/>
+<%= request.getContextPath()%> <!-- Vários objetos implícitos, bastante utilizado-->
+<% response.sendRedirect("http://www.uol.com.br"); %> <!--  Redirecionar para outra página web ou do sistema mesmo-->
+
 
 </body>
 </html>

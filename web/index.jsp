@@ -15,12 +15,14 @@
 <h1>Bem-vindo ao curso de JSP</h1>
 <%= "Seu sucesso garantido"%>
 
-<form action="receber-nome.jsp">
+<form action="receber-nome-2.jsp">
     <input type="text" id="nome" name="nome">
     <input type="submit" value="Enviar">
 </form>
 
-<!-- Tag declarativa-->
+
+
+<!-- Tag declarativa
 <%!
     int cont = 2;
     public int retorna(int n){
@@ -29,6 +31,31 @@
 %>
 
 <%= retorna(cont)%>
+<br/>
+-->
+
+<!-- Pegando dados do web.xml, através do objeto implícito application
+<%= application.getInitParameter("estado")%>
+-->
+
+<!-- Objetos ímplicitos da seção de um usuário por exemplo-->
+<% session.setAttribute("curso","curso de jsp");%>
+
+<!-- Exemplos directiva
+<%@page import="java.util.Date"%>
+<%= "Data de hoje é: "+new Date()%>
+
+<%@page info="Página do curso de JSP" %>
+
+<%@page errorPage="erro.jsp" %>
+<%=100/2%>
+-->
+
+<!-- Exemplo de inclusao de páginas dentro de outras
+<%@include file="pagina-include.jsp"%>
+-->
+
+<!--<myprefix:minhatag/> -->
 
 </body>
 </html>
