@@ -27,17 +27,11 @@
 <%= calcula.calcula(8000)%>
 -->
 
-<form action="cabecalho.jsp" method="post">
 
-    <input type="text" id="nome" name="nome"/>
-    <br/>
-    <input type="number" id="ano" name="ano"/>
-    <br/>
-    <input type="text" id="sexo" name="sexo"/>
-    <br/>
-    <input type="submit" value="testar"/>
-
-</form>
+<% session.setAttribute("user", "javaAvancado");%>
+<a href="cabecalho.jsp">Ver teste</a>
+<br/>
+<a href="uploadArquivos.jsp">Fazer upload de arquivos</a>
 
 </body>
 </html>
