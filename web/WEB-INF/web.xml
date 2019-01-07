@@ -4,16 +4,22 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <filter>
+        <filter-name>filter</filter-name>
+        <filter-class>filter.Filter</filter-class>
+    </filter>
+
     <servlet>
-        <servlet-name>LoginServlet"</servlet-name>
+        <servlet-name>LoginServlet</servlet-name>
         <servlet-class>servlet.LoginServlet</servlet-class>
     </servlet>
-    
+
     <servlet-mapping>
-        <servlet-name>LoginServlet"</servlet-name>
+        <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
-    
+
+
     <context-param>
         <param-name>estado</param-name>
         <param-value>goiás</param-value>

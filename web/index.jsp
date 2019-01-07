@@ -16,54 +16,6 @@
 </head>
 <body>
 
-<!--
-<c:out value="${'bem vindo ao JSTL'}"/>
-
-<c:forEach var="n" begin="1" end="100">
-    Item : ${n}
-    <br/>
-
-</c:forEach>
-
-Quebrando string
-<c:forTokens items="Bruno-Cesar-Vicente" delims="-" var="nome">
-    
-    Nome: <c:out value="${nome}"/>
-    <br/>
-</c:forTokens>
-
-
-Montar uma url
-<c:url value="/acessoLiberado.jsp" var="acesso">
-
-    <c:param name="para1" value="111"/>
-    <c:param name="para1" value="222"/>
-    <c:param name="para1" value="333"/>
-</c:url>
-
-${acesso}
-
-
-<c:set var="numero" value="${100/2}"/>
-
-<c:if test="${numero >= 50}">
-    <c:redirect url="https://www.google.com.br"/>
-
-</c:if>
-
-<c:if test="${numero < 50}">
-    <c:redirect url="http://www.javaavancado.com"/>
-
-</c:if>
--->
-
-
-<p/>
-<p/>
-<p/>
-<p/>
-
-
 <form action="LoginServlet" method="post">
 
     Login:
