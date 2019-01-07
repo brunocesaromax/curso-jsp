@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<!--
+
 <c:out value="${'bem vindo ao JSTL'}"/>
 
 <c:forEach var="n" begin="1" end="100">
@@ -27,7 +27,7 @@
 
 Quebrando string
 <c:forTokens items="Bruno-Cesar-Vicente" delims="-" var="nome">
-    
+
     Nome: <c:out value="${nome}"/>
     <br/>
 </c:forTokens>
@@ -55,7 +55,7 @@ ${acesso}
     <c:redirect url="http://www.javaavancado.com"/>
 
 </c:if>
--->
+
 
 
 <p/>
@@ -63,18 +63,7 @@ ${acesso}
 <p/>
 <p/>
 
-
-<form action="LoginServlet" method="post">
-
-    Login:
-    <input type="text" id="login" name="login">
-    <br/>
-    Senha:
-    <input type="text" id="senha" name="senha">
-    <br/>
-    <input type="submit" value="Logar">
-
-</form>
 
 </body>
 </html>
+

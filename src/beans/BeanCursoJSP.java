@@ -3,35 +3,32 @@ package beans;
 /*Bean é uma classe java para processar dados em memória, não persistente*/
 public class BeanCursoJSP {
 
-    private String nome;
-    private int ano;
-    private char sexo;
+    private String login;
+    private String senha;
 
-    public String getNome() {
-        return nome;
+    public String getLogin() {
+        return login;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
-    public int getAno() {
-        return ano;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setAno(int ano) {
-        this.ano = ano;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
-    public char getSexo() {
-        return sexo;
-    }
+    public boolean validarLoginSenha(String login, String senha){
 
-    public void setSexo(char sexo) {
-        this.sexo = sexo;
-    }
+        if (login.equalsIgnoreCase("admin") && senha.equalsIgnoreCase("admin")){
+            return true;
+        }else {
+            return false;
+        }
 
-    public int calcula(int numero){
-        return numero * 100;
     }
 }

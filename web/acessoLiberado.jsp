@@ -16,8 +16,8 @@
 
 <%--Recuperando atributos de um certo Bean enviado via post--%>
 <jsp:setProperty name="calcula" property="*"/>
-<h3>Cabecalho</h3>
-${sessionScope.user}
+<h3>Seja bem-vindo ao sistema JSP!</h3>
+
 
 </body>
 </html>
