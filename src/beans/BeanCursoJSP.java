@@ -3,8 +3,17 @@ package beans;
 /*Bean é uma classe java para processar dados em memória, não persistente*/
 public class BeanCursoJSP {
 
+    private Long id;
     private String login;
     private String senha;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getLogin() {
         return login;
