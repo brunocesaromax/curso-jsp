@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 /*Responsável pela conexão com o banco de dados*/
 public class SingleConnection {
 
-    private static String banco= "jdbc:postgresql://localhost:5432/curso-jsp?autoReconnect=true";// Se banco cair ele irá se auto reconectar
+    private static String banco= "jdbc:postgresql://localhost:5432/curso-jsp?autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8";// Se banco cair ele irá se auto reconectar
     private static String password = "postgres";
     private static String user = "postgres";
     private static Connection connection = null;

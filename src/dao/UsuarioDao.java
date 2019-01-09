@@ -21,10 +21,11 @@ public class UsuarioDao {
     public void salvar(BeanCursoJSP beanCursoJSP) {
 
         try {
-            String sql = "insert into usuario(login,senha) values (?,?)";
+            String sql = "insert into usuario(login,senha,nome) values (?,?,?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, beanCursoJSP.getLogin());
             statement.setString(2, beanCursoJSP.getSenha());
+            statement.setString(3, beanCursoJSP.getNome());
             statement.execute();
             connection.commit();
 
@@ -46,7 +47,7 @@ public class UsuarioDao {
         List<BeanCursoJSP> usuarios = new ArrayList<>();
 
         try {
-            String sql = "select * from usuario";
+            String sql = "select * from usuario order by id";
             PreparedStatement statement = null;
             statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
@@ -56,6 +57,7 @@ public class UsuarioDao {
                 beanCursoJSP.setId(resultSet.getLong("id"));
                 beanCursoJSP.setLogin(resultSet.getString("login"));
                 beanCursoJSP.setSenha(resultSet.getString("senha"));
+                beanCursoJSP.setNome(resultSet.getString("nome"));
                 usuarios.add(beanCursoJSP);
             }
 
@@ -102,6 +104,7 @@ public class UsuarioDao {
                 beanCursoJSP.setId(resultSet.getLong("id"));
                 beanCursoJSP.setLogin(resultSet.getString("login"));
                 beanCursoJSP.setSenha(resultSet.getString("senha"));
+                beanCursoJSP.setNome(resultSet.getString("nome"));
                 return beanCursoJSP;
             }
 
@@ -117,11 +120,12 @@ public class UsuarioDao {
     public void atualizar(BeanCursoJSP usuario) {
 
         try {
-            String sql = "update usuario set login = ?, senha = ? where id = ?";
+            String sql = "update usuario set login = ?, senha = ?, nome = ? where id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, usuario.getLogin());
             preparedStatement.setString(2, usuario.getSenha());
-            preparedStatement.setLong(3, usuario.getId());
+            preparedStatement.setString(3, usuario.getNome());
+            preparedStatement.setLong(4, usuario.getId());
             preparedStatement.executeUpdate();
             connection.commit();
 

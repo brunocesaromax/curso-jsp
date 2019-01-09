@@ -28,11 +28,13 @@ public class UsuarioServlet extends HttpServlet {
 
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
+        String nome = request.getParameter("nome");
 
         BeanCursoJSP usuario = new BeanCursoJSP();
         usuario.setId(id);
         usuario.setLogin(login);
         usuario.setSenha(senha);
+        usuario.setNome(nome);
 
         if (id == null ){
             usuarioDao.salvar(usuario);
