@@ -9,24 +9,30 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="calcula" class="beans.BeanCursoJSP" type="beans.BeanCursoJSP" scope="page"/>
 
-
 <html>
 <head>
     <title>Tela inicial</title>
+    <link rel="stylesheet" href="resources/css/estilo.css">
 </head>
 <body>
 
-<form action="LoginServlet" method="post">
+<div class="login-page">
+    <div class="form">
 
-    Login:
-    <input type="text" id="login" name="login">
-    <br/>
-    Senha:
-    <input type="password" id="senha" name="senha">
-    <br/>
-    <input type="submit" value="Logar">
+        <form action="LoginServlet" method="post" class="login-form">
 
-</form>
+            Login:
+            <input type="text" id="login" name="login">
+            <br/>
+            Senha:
+            <input type="password" id="senha" name="senha">
+            <br/>
+            <button type="submit" value="Logar">Logar</button>
+
+        </form>
+
+    </div>
+</div>
 
 </body>
 </html>
