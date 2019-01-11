@@ -68,14 +68,13 @@ public class UsuarioDao {
         return usuarios;
     }
 
-    public void delete(String login) {
+    public void delete(Long id) {
 
         try {
 
-            String sql = "delete from usuario where login= ?";
-            PreparedStatement statement = null;
-            statement = connection.prepareStatement(sql);
-            statement.setString(1, login);
+            String sql = "delete from usuario where id= ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, id);
             statement.execute();
             connection.commit();
 
@@ -91,11 +90,11 @@ public class UsuarioDao {
 
     }
 
-    public BeanCursoJSP buscar(String user) {
+    public BeanCursoJSP buscar(Long id) {
 
         try {
 
-            String sql = "select * from usuario where login = '" + user + "'";
+            String sql = "select * from usuario where id = '" + id + "'";
             PreparedStatement statement = connection.prepareStatement(sql);
 
             ResultSet resultSet = statement.executeQuery();
@@ -140,4 +139,29 @@ public class UsuarioDao {
         }
 
     }
+
+    public BeanCursoJSP buscarByLogin(String login) {
+
+        try {
+
+            String sql = "select id from usuario where login = '" + login + "'";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                BeanCursoJSP beanCursoJSP = new BeanCursoJSP();
+                beanCursoJSP.setId(resultSet.getLong("id"));
+                return beanCursoJSP;
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return null;
+
+    }
+
 }

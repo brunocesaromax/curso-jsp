@@ -18,7 +18,8 @@
 <jsp:setProperty name="calcula" property="*"/>
 <h3>Seja bem-vindo ao sistema JSP!</h3>
 
-<a href="cadastroUsuario.jsp">Cadastro de usuários</a>
+<%--Quando se chama a servlet via href costuma-se ser enviado para o doGet da servlet--%>
+<a href="salvarUsuario?acao=listartodos"><img src="resources/img/user.png" width="150px" height="150px"></a>
 
 
 </body>
