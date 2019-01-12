@@ -51,22 +51,42 @@ public class UsuarioServlet extends HttpServlet {
 
             if (id == null) {
 
+                /*Validar que usuário seja único com o login*/
                 BeanCursoJSP usuarioBD = usuarioDao.buscarByLogin(login);
 
                 if (usuarioBD == null) {
                     usuarioDao.salvar(usuario);
                 } else {
-                    request.setAttribute("msg", "Login já existe no sistema, tente outro!");
+                    request.setAttribute("msgLogin", "Login já existe no sistema, tente outro!");
+                }
+
+                /*Validar que usuário seja único com a senha*/
+                usuarioBD = usuarioDao.buscarBySenha(senha);
+
+                if (usuarioBD == null) {
+                    usuarioDao.salvar(usuario);
+                } else {
+                    request.setAttribute("msgSenha", "Senha já existe no sistema, tente outra!");
                 }
 
             } else {
 
+                /*Para login*/
                 BeanCursoJSP usuarioBD = usuarioDao.buscarByLogin(login);
 
                 if (usuarioBD != null && usuarioBD.getId().equals(usuario.getId())) {
                     usuarioDao.atualizar(usuario);
                 } else {
-                    request.setAttribute("msg", "O login que foi modificado já existe no sistema para outro usuário, tente outro!");
+                    request.setAttribute("msgLogin", "O login que foi modificado já existe no sistema para outro usuário, tente outro!");
+                }
+
+                /*Para senha*/
+                usuarioBD = usuarioDao.buscarBySenha(senha);
+
+                if (usuarioBD != null && usuarioBD.getId().equals(usuario.getId())) {
+                    usuarioDao.atualizar(usuario);
+                } else {
+                    request.setAttribute("msgSenha", "A senha que foi modificada já existe no sistema para outro usuário, tente outra!");
                 }
 
             }

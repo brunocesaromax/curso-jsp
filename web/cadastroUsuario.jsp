@@ -19,7 +19,8 @@
 
 <center><h1>Cadastro de usuário</h1></center>
 
-<center><h3 style="color: red">${msg}</h3></center>
+<center><h3 style="color: red">${msgLogin}</h3></center>
+<center><h3 style="color: red">${msgSenha}</h3></center>
 
 <form action="salvarUsuario" id="formUser" method="post" accept-charset="ISO-8859-1">
     <ul class="form-style-1">

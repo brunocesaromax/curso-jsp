@@ -168,4 +168,28 @@ public class UsuarioDao {
 
     }
 
+    public BeanCursoJSP buscarBySenha(String senha) {
+
+        try {
+
+            String sql = "select id from usuario where senha = '" + senha + "'";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                BeanCursoJSP beanCursoJSP = new BeanCursoJSP();
+                beanCursoJSP.setId(resultSet.getLong("id"));
+                return beanCursoJSP;
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return null;
+
+    }
+
 }
