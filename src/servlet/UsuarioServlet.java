@@ -19,6 +19,7 @@ public class UsuarioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String acao = request.getParameter("acao");
+        boolean flag = false;
 
         /*Clicou no botao cancelar*/
         if (acao != null && acao.equalsIgnoreCase("reset")) {
@@ -55,18 +56,29 @@ public class UsuarioServlet extends HttpServlet {
                 BeanCursoJSP usuarioBD = usuarioDao.buscarByLogin(login);
 
                 if (usuarioBD == null) {
-                    usuarioDao.salvar(usuario);
+                    flag = true;
                 } else {
                     request.setAttribute("msgLogin", "Login já existe no sistema, tente outro!");
                 }
 
                 /*Validar que usuário seja único com a senha*/
-                usuarioBD = usuarioDao.buscarBySenha(senha);
+                if (request.getAttribute("msgLogin") == null) {
 
-                if (usuarioBD == null) {
+                    usuarioBD = usuarioDao.buscarBySenha(senha);
+
+                    if (usuarioBD == null) {
+                        flag = true;
+                    } else {
+                        flag = false;
+                        request.setAttribute("msgSenha", "Senha já existe no sistema, tente outra!");
+                    }
+                }
+
+                if (flag) {
                     usuarioDao.salvar(usuario);
-                } else {
-                    request.setAttribute("msgSenha", "Senha já existe no sistema, tente outra!");
+
+                }else{//Manter os dados do usuário que se quer cadastrar na tela
+                    request.setAttribute("user",usuario);
                 }
 
             } else {
@@ -75,20 +87,30 @@ public class UsuarioServlet extends HttpServlet {
                 BeanCursoJSP usuarioBD = usuarioDao.buscarByLogin(login);
 
                 if (usuarioBD != null && usuarioBD.getId().equals(usuario.getId())) {
-                    usuarioDao.atualizar(usuario);
+                    flag = true;// Pode atualizar, pois o login é o mesmo do usuário que se está manipulando
                 } else {
                     request.setAttribute("msgLogin", "O login que foi modificado já existe no sistema para outro usuário, tente outro!");
                 }
 
-                /*Para senha*/
-                usuarioBD = usuarioDao.buscarBySenha(senha);
+                /*Caso não haja erro quanto ao login, verificar senha*/
+                if (request.getAttribute("msgLogin") == null) {
 
-                if (usuarioBD != null && usuarioBD.getId().equals(usuario.getId())) {
-                    usuarioDao.atualizar(usuario);
-                } else {
-                    request.setAttribute("msgSenha", "A senha que foi modificada já existe no sistema para outro usuário, tente outra!");
+                    /*Para senha*/
+                    usuarioBD = usuarioDao.buscarBySenha(senha);
+
+                    if (usuarioBD == null || usuarioBD.getId().equals(usuario.getId())) {
+                        flag = true; //Pode atualizar
+
+                    } else {
+                        flag = false;
+                        request.setAttribute("msgSenha", "A senha que foi modificada já existe no sistema para outro usuário, tente outra!");
+                    }
                 }
 
+                /*Estando tudo ok atualiza o usuario*/
+                if (flag) {
+                    usuarioDao.atualizar(usuario);
+                }
             }
 
             //Após salvar um novo usuário, redirecionar para a mesma página de cadastro e passar como parâmetro um lista de usuário para que possa ser apresentada
