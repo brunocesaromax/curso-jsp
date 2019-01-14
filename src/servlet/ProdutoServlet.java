@@ -41,9 +41,19 @@ public class ProdutoServlet extends HttpServlet {
             }
 
             String nome = request.getParameter("nome");
-            Long quantidade = Long.valueOf(request.getParameter("quantidade"));
-            Double valor = Double.valueOf(request.getParameter("valor"));
-            
+            Long quantidade = request.getParameter("quantidade") == null || request.getParameter("quantidade").isEmpty() ? Long.valueOf(0) : Long.valueOf(request.getParameter("quantidade"));
+            Double valor = request.getParameter("valor") == null || request.getParameter("valor").isEmpty() ? Double.valueOf(0) : Double.valueOf(request.getParameter("valor"));
+
+            if (nome == null || nome.isEmpty()){
+
+                RequestDispatcher view = request.getRequestDispatcher("/cadastroProduto.jsp");
+                request.setAttribute("produtos", produtoDao.listar());
+                request.setAttribute("msgNome","Campo de nome do produto é obrigatório!");
+                view.forward(request, response);
+                return;
+            }
+
+
             Produto produto = new Produto(id,nome,quantidade,valor);
 
             if (id == null) {
@@ -77,6 +87,8 @@ public class ProdutoServlet extends HttpServlet {
 
                 /*Estando tudo ok atualiza o produto*/
                 if (flag) {
+                    produto.setQuantidade(quantidade != null ? quantidade : 0);
+                    produto.setQuantidade(valor != null ? quantidade : 0);
                     produtoDao.atualizar(produto);
                 }
             }

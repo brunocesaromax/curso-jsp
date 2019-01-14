@@ -21,7 +21,7 @@ public class UsuarioServlet extends HttpServlet {
         String acao = request.getParameter("acao");
         boolean flag = false;
 
-        /*Clicou no botao cancelar*/
+        /*Clicou no botao cancelar, Validando via JS*/
         if (acao != null && acao.equalsIgnoreCase("reset")) {
 
             RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
@@ -43,6 +43,34 @@ public class UsuarioServlet extends HttpServlet {
             String nome = request.getParameter("nome");
             String telefone = request.getParameter("telefone");
 
+            /*Primeiramente validar campos obrigatórios*/
+            if (login == null || login.isEmpty()){
+
+                RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+                request.setAttribute("usuarios", usuarioDao.listar());
+                request.setAttribute("msgLogin","Login deve ser informado!");
+                view.forward(request, response);
+                return;
+
+            }else if (senha == null || senha.isEmpty()){
+
+                RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+                request.setAttribute("usuarios", usuarioDao.listar());
+                request.setAttribute("msgLogin","Campo senha deve ser informado!");
+                view.forward(request, response);
+                return;
+
+            }else if (nome == null || nome.isEmpty()){
+
+                RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+                request.setAttribute("usuarios", usuarioDao.listar());
+                request.setAttribute("msgLogin","Campo nome deve ser informado!");
+                view.forward(request, response);
+                return;
+            }
+
+
+            /*Caso campos obrigatórios estejam presentes, prosseguir rotina*/
             BeanCursoJSP usuario = new BeanCursoJSP();
             usuario.setId(id);
             usuario.setLogin(login);

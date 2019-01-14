@@ -45,7 +45,7 @@
                 </tr>
 
                 <tr>
-                    <td>Valor:</td>
+                    <td>Valor R$:</td>
                     <td><input type="number" step="0.01" placeholder="0.00" min="0" id="valor" name="valor" value="${produto.valor}"></td>
                 </tr>
 
@@ -78,7 +78,7 @@
                 <td style="width: 150px"><c:out value="${produto.id}"></c:out></td>
                 <td style="width: 150px"><c:out value="${produto.nome}"></c:out></td>
                 <td style="width: 150px"><c:out value="${produto.quantidade}"></c:out></td>
-                <td style="width: 150px"><c:out value="${produto.valor}"></c:out></td>
+                <td style="width: 150px"><c:out value="R$ ${produto.valor}"></c:out></td>
                 <td><a href="salvarProduto?acao=delete&produto=${produto.id}"><img src="resources/img/excluir.png"
                                                                                 alt="Excluir" title="Excluir"
                                                                                 width="20px" height="20px"></a></td>
