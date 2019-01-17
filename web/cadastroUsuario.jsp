@@ -55,27 +55,27 @@
 
                 <tr>
                     <td>Cep:</td>
-                    <td><input type="text" id="cep" name="cep" onblur="consultaCep()"/></td>
+                    <td><input type="text" id="cep" name="cep" value="${user.cep}" onblur="consultaCep()"/></td>
                 </tr>
 
                 <tr>
                     <td>Rua:</td>
-                    <td><input type="text" id="rua" name="rua" /></td>
+                    <td><input type="text" id="rua" name="rua" value="${user.rua}"/></td>
                 </tr>
 
                 <tr>
                     <td>Bairro:</td>
-                    <td><input type="text" id="bairro" name="bairro" /></td>
+                    <td><input type="text" id="bairro" name="bairro" value="${user.bairro}" /></td>
                 </tr>
 
                 <tr>
                     <td>Cidade:</td>
-                    <td><input type="text" id="cidade" name="cidade" /></td>
+                    <td><input type="text" id="cidade" name="cidade" value="${user.cidade}"/></td>
                 </tr>
 
                 <tr>
                     <td>Estado:</td>
-                    <td><input type="text" id="estado" name="estado" /></td>
+                    <td><input type="text" id="estado" name="estado" value="${user.estado}"/></td>
                 </tr>
 
                 <tr>
@@ -110,15 +110,26 @@
             <th>Nome</th>
             <th>Telefone</th>
             <th>Login</th>
+            <th>Cep</th>
+            <th>Rua</th>
+            <th>Bairro</th>
+            <th>Cidade</th>
+            <th>Estado</th>
             <th>Excluir</th>
             <th>Editar</th>
         </tr>
+
         <c:forEach items="${usuarios}" var="user">
             <tr>
                 <td style="width: 150px"><c:out value="${user.id}"></c:out></td>
                 <td style="width: 150px"><c:out value="${user.nome}"></c:out></td>
                 <td style="width: 150px"><c:out value="${user.telefone}"></c:out></td>
                 <td style="width: 150px"><c:out value="${user.login}"></c:out></td>
+                <td style="width: 150px"><c:out value="${user.cep}"></c:out></td>
+                <td style="width: 150px"><c:out value="${user.rua}"></c:out></td>
+                <td style="width: 150px"><c:out value="${user.bairro}"></c:out></td>
+                <td style="width: 150px"><c:out value="${user.cidade}"></c:out></td>
+                <td style="width: 150px"><c:out value="${user.estado}"></c:out></td>
                 <td><a href="salvarUsuario?acao=delete&user=${user.id}"><img src="resources/img/excluir.png"
                                                                              alt="Excluir" title="Excluir"
                                                                              width="20px" height="20px"></a></td>
