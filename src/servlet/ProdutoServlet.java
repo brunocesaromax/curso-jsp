@@ -1,9 +1,7 @@
 package servlet;
 
-import beans.BeanCursoJSP;
 import beans.Produto;
 import dao.ProdutoDao;
-import dao.UsuarioDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

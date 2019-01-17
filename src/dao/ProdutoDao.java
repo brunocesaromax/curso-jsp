@@ -1,7 +1,6 @@
 package dao;
 
 import beans.Produto;
-import beans.Produto;
 import connection.SingleConnection;
 
 import java.sql.Connection;

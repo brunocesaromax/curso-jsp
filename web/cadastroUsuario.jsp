@@ -14,15 +14,23 @@
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
     <title>Cadastro de usuário</title>
     <link rel="stylesheet" href="resources/css/cadastro.css">
+    <!-- Adicionando JQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
 </head>
 <body>
+
+<a href="acessoLiberado.jsp">Início</a>
+<a href="index.jsp">Sair</a>
 
 <center><h1>Cadastro de usuário</h1></center>
 
 <center><h3 style="color: red">${msgLogin}</h3></center>
 <center><h3 style="color: red">${msgSenha}</h3></center>
 
-<form action="salvarUsuario" id="formUser" method="post" accept-charset="ISO-8859-1">
+<%--Validação feita também com javascript--%>
+<form action="salvarUsuario" id="formUser" onsubmit=" return validarCampos()" method="post" accept-charset="ISO-8859-1">
     <ul class="form-style-1">
         <li>
 
@@ -46,6 +54,31 @@
                 </tr>
 
                 <tr>
+                    <td>Cep:</td>
+                    <td><input type="text" id="cep" name="cep" onblur="consultaCep()"/></td>
+                </tr>
+
+                <tr>
+                    <td>Rua:</td>
+                    <td><input type="text" id="rua" name="rua" /></td>
+                </tr>
+
+                <tr>
+                    <td>Bairro:</td>
+                    <td><input type="text" id="bairro" name="bairro" /></td>
+                </tr>
+
+                <tr>
+                    <td>Cidade:</td>
+                    <td><input type="text" id="cidade" name="cidade" /></td>
+                </tr>
+
+                <tr>
+                    <td>Estado:</td>
+                    <td><input type="text" id="estado" name="estado" /></td>
+                </tr>
+
+                <tr>
                     <td>Login:</td>
                     <td><input type="text" id="login" name="login" value="${user.login}"></td>
                 </tr>
@@ -57,7 +90,8 @@
 
                 <tr>
                     <td></td>
-                    <td><input type="submit" value="Salvar"> <input type="submit" value="Cancelar" onclick="document.getElementById('formUser').action = 'salvarUsuario?acao=reset'"></td>
+                    <td><input type="submit" value="Salvar"/> <input type="submit" value="Cancelar"
+                                                                     onclick=" return isEdicao() ? document.getElementById('formUser').action = 'salvarUsuario?acao=reset' :  limparCampos()"/></td>
                 </tr>
 
             </table>
@@ -86,16 +120,85 @@
                 <td style="width: 150px"><c:out value="${user.telefone}"></c:out></td>
                 <td style="width: 150px"><c:out value="${user.login}"></c:out></td>
                 <td><a href="salvarUsuario?acao=delete&user=${user.id}"><img src="resources/img/excluir.png"
-                                                                                alt="Excluir" title="Excluir"
-                                                                                width="20px" height="20px"></a></td>
+                                                                             alt="Excluir" title="Excluir"
+                                                                             width="20px" height="20px"></a></td>
                 <td><a href="salvarUsuario?acao=editar&user=${user.id}"><img src="resources/img/editar.png"
-                                                                                alt="Editar" title="Editar" width="20px"
-                                                                                height="20px"></a></td>
+                                                                             alt="Editar" title="Editar" width="20px"
+                                                                             height="20px"></a></td>
             </tr>
         </c:forEach>
     </table>
 </div>
 
+<%--Validação do lado cliente, para economizar processamento desnecessário do lado do servidor--%>
+<script type="text/javascript">
+
+    function validarCampos() {
+
+        if (document.getElementById("login").value === '') {
+            alert('Informe o login');
+            return false;
+
+        } else if (document.getElementById("senha").value === '') {
+            alert('Informe a senha');
+            return false;
+
+        } else if (document.getElementById("nome").value === '') {
+            alert('Informe o nome');
+            return false;
+        }
+
+        return true;
+    }
+
+    function limparCampos() {
+        document.getElementById('formUser').reset();
+        return false;
+    }
+
+    function isEdicao() {
+
+        if(document.getElementById('id') !== ''){
+
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    function consultaCep() {
+
+        var cep = $("#cep").val();
+
+        //Consulta o webservice viacep.com.br/
+        $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+
+            if (!("erro" in dados)){
+
+                $("#rua").val(dados.logradouro);
+                $("#bairro").val(dados.bairro);
+                $("#cidade").val(dados.localidade);
+                $("#estado").val(dados.uf);
+
+            } else{
+
+                $("#rua").val('');
+                $("#bairro").val('');
+                $("#cidade").val('');
+                $("#estado").val('');
+
+                //CEP pesquisado não encontrado
+                alert("CEP não encontrado.")
+            }
+
+        });
+    }
+
+
+
+</script>
 
 </body>
 </html>

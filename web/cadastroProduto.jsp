@@ -17,11 +17,14 @@
 </head>
 <body>
 
+<a href="acessoLiberado.jsp">Início</a>
+<a href="index.jsp">Sair</a>
+
 <center><h1>Cadastro de produto</h1></center>
 
 <center><h3 style="color: red">${msgNome}</h3></center>
 
-<form action="salvarProduto" id="formProduto" method="post" accept-charset="ISO-8859-1">
+<form action="salvarProduto" onsubmit="return validarCampos()" id="formProduto" method="post" accept-charset="ISO-8859-1">
     <ul class="form-style-1">
         <li>
 
@@ -41,7 +44,7 @@
 
                 <tr>
                     <td>Quantidade:</td>
-                    <td><input type="number" id="quantidade" min="0" name="quantidade" value="${produto.quantidade}"></td>
+                    <td><input type="number" id="quantidade" placeholder="0" min="0" name="quantidade" value="${produto.quantidade}"></td>
                 </tr>
 
                 <tr>
@@ -51,7 +54,7 @@
 
                 <tr>
                     <td></td>
-                    <td><input type="submit" value="Salvar"> <input type="submit" value="Cancelar" onclick="document.getElementById('formproduto').action = 'salvarProduto?acao=reset'"></td>
+                    <td><input type="submit" value="Salvar"> <input type="submit" value="Cancelar" onclick=" return isEdicao() ? document.getElementById('formProduto').action = 'salvarProduto?acao=reset' :  limparCampos()"/></td>
                 </tr>
 
             </table>
@@ -89,6 +92,37 @@
         </c:forEach>
     </table>
 </div>
+
+<script type="text/javascript">
+
+    function validarCampos() {
+
+        if (document.getElementById("nome").value === '') {
+            alert('Informe o nome do produto');
+            return false;
+
+        }
+
+        return true;
+    }
+
+    function limparCampos() {
+        document.getElementById('formProduto').reset();
+        return false;
+    }
+
+    function isEdicao() {
+
+        if(document.getElementById('id') !== ''){
+
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+</script>
 
 
 </body>
