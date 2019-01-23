@@ -40,7 +40,7 @@ public class ProdutoServlet extends HttpServlet {
 
             String nome = request.getParameter("nome");
             Long quantidade = request.getParameter("quantidade") == null || request.getParameter("quantidade").isEmpty() ? Long.valueOf(0) : Long.valueOf(request.getParameter("quantidade"));
-            Double valor = request.getParameter("valor") == null || request.getParameter("valor").isEmpty() ? Double.valueOf(0) : Double.valueOf(request.getParameter("valor"));
+            Double valor = request.getParameter("valueOf") == null || request.getParameter("valueOf").isEmpty() ? Double.valueOf(0) : Double.valueOf(request.getParameter("valueOf"));
 
             if (nome == null || nome.isEmpty()){
 

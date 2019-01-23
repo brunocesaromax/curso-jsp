@@ -39,6 +39,16 @@
         <url-pattern>/salvarProduto</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>salvarTelefones</servlet-name>
+        <servlet-class>servlet.TelefoneServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>salvarTelefones</servlet-name>
+        <url-pattern>/salvarTelefones</url-pattern>
+    </servlet-mapping>
+
     <context-param>
         <param-name>estado</param-name>
         <param-value>goiás</param-value>

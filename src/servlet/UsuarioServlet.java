@@ -114,6 +114,7 @@ public class UsuarioServlet extends HttpServlet {
 
                 if (flag) {
                     usuarioDao.salvar(usuario);
+                    request.setAttribute("msgSucesso" , "Usuário cadastrado com sucesso!");
 
                 }else{//Manter os dados do usuário que se quer cadastrar na tela
                     request.setAttribute("user",usuario);
@@ -148,6 +149,7 @@ public class UsuarioServlet extends HttpServlet {
                 /*Estando tudo ok atualiza o usuario*/
                 if (flag) {
                     usuarioDao.atualizar(usuario);
+                    request.setAttribute("msgSucesso" , "Usuário atualizado com sucesso!");
                 }
             }
 
@@ -168,7 +170,6 @@ public class UsuarioServlet extends HttpServlet {
         } else {
             idUser = Long.valueOf(request.getParameter("user"));
         }
-
 
         if (acao.equalsIgnoreCase("delete")) {
             usuarioDao.delete(idUser);

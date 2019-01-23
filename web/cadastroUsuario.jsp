@@ -28,6 +28,7 @@
 
 <center><h3 style="color: red">${msgLogin}</h3></center>
 <center><h3 style="color: red">${msgSenha}</h3></center>
+<center><h3 style="color: green">${msgSucesso}</h3></center>
 
 <%--Validação feita também com javascript--%>
 <form action="salvarUsuario" id="formUser" onsubmit=" return validarCampos()" method="post" accept-charset="ISO-8859-1">
@@ -40,58 +41,46 @@
                     <td><input type="number" readonly="readonly" id="id" name="id" value="${user.id}"
                                class="field-long">
                     </td>
+                    <td>Cep:</td>
+                    <td><input type="text" id="cep" name="cep" value="${user.cep}" onblur="consultaCep()"/></td>
+
                 </tr>
 
                 <tr>
                     <td>Nome:</td>
                     <td><input type="text" id="nome" name="nome" value="${user.nome}"></td>
+                    <td>Rua:</td>
+                    <td><input type="text" id="rua" name="rua" value="${user.rua}"/></td>
                 </tr>
                 <tr>
 
                 <tr>
                     <td>Telefone:</td>
                     <td><input type="text" id="telefone" name="telefone" value="${user.telefone}"></td>
-                </tr>
-
-                <tr>
-                    <td>Cep:</td>
-                    <td><input type="text" id="cep" name="cep" value="${user.cep}" onblur="consultaCep()"/></td>
-                </tr>
-
-                <tr>
-                    <td>Rua:</td>
-                    <td><input type="text" id="rua" name="rua" value="${user.rua}"/></td>
-                </tr>
-
-                <tr>
                     <td>Bairro:</td>
-                    <td><input type="text" id="bairro" name="bairro" value="${user.bairro}" /></td>
-                </tr>
+                    <td><input type="text" id="bairro" name="bairro" value="${user.bairro}"/></td>
 
-                <tr>
-                    <td>Cidade:</td>
-                    <td><input type="text" id="cidade" name="cidade" value="${user.cidade}"/></td>
-                </tr>
-
-                <tr>
-                    <td>Estado:</td>
-                    <td><input type="text" id="estado" name="estado" value="${user.estado}"/></td>
                 </tr>
 
                 <tr>
                     <td>Login:</td>
                     <td><input type="text" id="login" name="login" value="${user.login}"></td>
+                    <td>Cidade:</td>
+                    <td><input type="text" id="cidade" name="cidade" value="${user.cidade}"/></td>
                 </tr>
 
                 <tr>
                     <td>Senha:</td>
                     <td><input type="password" id="senha" name="senha" value="${user.senha}"></td>
+                    <td>Estado:</td>
+                    <td><input type="text" id="estado" name="estado" value="${user.estado}"/></td>
                 </tr>
 
                 <tr>
                     <td></td>
                     <td><input type="submit" value="Salvar"/> <input type="submit" value="Cancelar"
-                                                                     onclick=" return isEdicao() ? document.getElementById('formUser').action = 'salvarUsuario?acao=reset' :  limparCampos()"/></td>
+                                                                     onclick=" return isEdicao() ? document.getElementById('formUser').action = 'salvarUsuario?acao=reset' :  limparCampos()"/>
+                    </td>
                 </tr>
 
             </table>
@@ -117,6 +106,7 @@
             <th>Estado</th>
             <th>Excluir</th>
             <th>Editar</th>
+            <th>Fones</th>
         </tr>
 
         <c:forEach items="${usuarios}" var="user">
@@ -135,6 +125,9 @@
                                                                              width="20px" height="20px"></a></td>
                 <td><a href="salvarUsuario?acao=editar&user=${user.id}"><img src="resources/img/editar.png"
                                                                              alt="Editar" title="Editar" width="20px"
+                                                                             height="20px"></a></td>
+                <td><a href="salvarTelefones?user=${user.id}"><img src="resources/img/telefone.png"
+                                                                             alt="Telefones" title="Telefones" width="20px"
                                                                              height="20px"></a></td>
             </tr>
         </c:forEach>
@@ -169,10 +162,10 @@
 
     function isEdicao() {
 
-        if(document.getElementById('id') !== ''){
+        if (document.getElementById('id') !== '') {
 
             return true;
-        }else{
+        } else {
             return false;
         }
 
@@ -183,17 +176,17 @@
         var cep = $("#cep").val();
 
         //Consulta o webservice viacep.com.br/
-        $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+        $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
 
 
-            if (!("erro" in dados)){
+            if (!("erro" in dados)) {
 
                 $("#rua").val(dados.logradouro);
                 $("#bairro").val(dados.bairro);
                 $("#cidade").val(dados.localidade);
                 $("#estado").val(dados.uf);
 
-            } else{
+            } else {
 
                 $("#rua").val('');
                 $("#bairro").val('');
@@ -206,7 +199,6 @@
 
         });
     }
-
 
 
 </script>

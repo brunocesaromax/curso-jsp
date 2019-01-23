@@ -56,7 +56,7 @@ public class ProdutoDao {
                 Produto.setId(resultSet.getLong("id"));
                 Produto.setNome(resultSet.getString("nome"));
                 Produto.setQuantidade(resultSet.getLong("quantidade"));
-                Produto.setValor(resultSet.getDouble("valor"));
+                Produto.setValor(resultSet.getDouble("valueOf"));
                 produtos.add(Produto);
             }
 
@@ -102,7 +102,7 @@ public class ProdutoDao {
                 Produto.setId(resultSet.getLong("id"));
                 Produto.setNome(resultSet.getString("nome"));
                 Produto.setQuantidade(resultSet.getLong("quantidade"));
-                Produto.setValor(resultSet.getDouble("valor"));
+                Produto.setValor(resultSet.getDouble("valueOf"));
 
                 return Produto;
             }
