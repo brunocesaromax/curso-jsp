@@ -79,10 +79,10 @@
 
         <c:forEach items="${telefones}" var="fone">
             <tr>
-                    <%--<td style="width: 150px"><c:out value="${fone.id}"></c:out></td>
+                    <td style="width: 150px"><c:out value="${fone.id}"></c:out></td>
                     <td style="width: 150px"><c:out value="${fone.numero}"></c:out></td>
-                    <td style="width: 150px"><c:out value="${fone.tipo}"></c:out></td>--%>
-                <td><a href="salvarUsuario?acao=delete&user=${user.id}"><img src="resources/img/excluir.png"
+                    <td style="width: 150px"><c:out value="${fone.tipo}"></c:out></td>
+                <td style="width: 150px"><a href="salvarTelefones?acao=deleteFone&foneId=${fone.id}"><img src="resources/img/excluir.png"
                                                                              alt="Excluir" title="Excluir"
                                                                              width="20px" height="20px"></a></td>
             </tr>

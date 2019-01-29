@@ -126,7 +126,7 @@
                 <td><a href="salvarUsuario?acao=editar&user=${user.id}"><img src="resources/img/editar.png"
                                                                              alt="Editar" title="Editar" width="20px"
                                                                              height="20px"></a></td>
-                <td><a href="salvarTelefones?user=${user.id}"><img src="resources/img/telefone.png"
+                <td><a href="salvarTelefones?acao=addFone&user=${user.id}"><img src="resources/img/telefone.png"
                                                                              alt="Telefones" title="Telefones" width="20px"
                                                                              height="20px"></a></td>
             </tr>

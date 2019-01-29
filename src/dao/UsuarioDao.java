@@ -64,7 +64,7 @@ public class UsuarioDao {
                 beanCursoJSP.setLogin(resultSet.getString("login"));
                 beanCursoJSP.setSenha(resultSet.getString("senha"));
                 beanCursoJSP.setNome(resultSet.getString("nome"));
-                beanCursoJSP.setTelefone(resultSet.getString("telefone"));
+                beanCursoJSP.setTelefone(resultSet.getString("Telefone"));
                 beanCursoJSP.setCep(resultSet.getString("cep"));
                 beanCursoJSP.setRua(resultSet.getString("rua"));
                 beanCursoJSP.setBairro(resultSet.getString("bairro"));
@@ -116,7 +116,7 @@ public class UsuarioDao {
                 beanCursoJSP.setLogin(resultSet.getString("login"));
                 beanCursoJSP.setSenha(resultSet.getString("senha"));
                 beanCursoJSP.setNome(resultSet.getString("nome"));
-                beanCursoJSP.setTelefone(resultSet.getString("telefone"));
+                beanCursoJSP.setTelefone(resultSet.getString("Telefone"));
                 beanCursoJSP.setCep(resultSet.getString("cep"));
                 beanCursoJSP.setRua(resultSet.getString("rua"));
                 beanCursoJSP.setBairro(resultSet.getString("bairro"));

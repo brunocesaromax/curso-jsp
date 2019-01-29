@@ -41,7 +41,7 @@ public class UsuarioServlet extends HttpServlet {
             String login = request.getParameter("login");
             String senha = request.getParameter("senha");
             String nome = request.getParameter("nome");
-            String telefone = request.getParameter("telefone");
+            String telefone = request.getParameter("Telefone");
             String cep = request.getParameter("cep");
             String rua = request.getParameter("rua");
             String bairro = request.getParameter("bairro");

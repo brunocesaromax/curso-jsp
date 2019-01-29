@@ -28,4 +28,17 @@ public enum TipoTelefone {
         }
     }
 
+    public static TipoTelefone valor(Long valor){
+
+        if (valor.equals(0L)) {
+            return TipoTelefone.CASA;
+        } else if (valor.equals(1L)) {
+            return TipoTelefone.CELULAR;
+        } else if (valor.equals(2L)) {
+            return TipoTelefone.TRABALHO;
+        } else {
+            return null;
+        }
+    }
+
 }
