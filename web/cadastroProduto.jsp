@@ -38,7 +38,7 @@
 
                 <tr>
                     <td>Nome:</td>
-                    <td><input type="text" id="nome" name="nome" value="${produto.nome}"></td>
+                    <td><input type="text" id="nome" name="nome" placeholder="Informe o nome do produto" value="${produto.nome}"></td>
                 </tr>
                 <tr>
 

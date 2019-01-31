@@ -42,13 +42,13 @@
                                class="field-long">
                     </td>
                     <td>Cep:</td>
-                    <td><input type="text" id="cep" name="cep" value="${user.cep}" onblur="consultaCep()"/></td>
+                    <td><input type="text" id="cep" name="cep" value="${user.cep}" placeholder="Informe um cep válido" onblur="consultaCep()"/></td>
 
                 </tr>
 
                 <tr>
                     <td>Nome:</td>
-                    <td><input type="text" id="nome" name="nome" value="${user.nome}"></td>
+                    <td><input type="text" id="nome" name="nome" placeholder="Informe o nome do usuário" value="${user.nome}"></td>
                     <td>Rua:</td>
                     <td><input type="text" id="rua" name="rua" value="${user.rua}"/></td>
                 </tr>
@@ -56,7 +56,7 @@
 
                 <tr>
                     <td>Telefone:</td>
-                    <td><input type="text" id="telefone" name="telefone" value="${user.telefone}"></td>
+                    <td><input type="text" id="telefone" name="telefone" value="${user.telefone}" placeholder="Informe o telefone"></td>
                     <td>Bairro:</td>
                     <td><input type="text" id="bairro" name="bairro" value="${user.bairro}"/></td>
 
@@ -64,14 +64,14 @@
 
                 <tr>
                     <td>Login:</td>
-                    <td><input type="text" id="login" name="login" value="${user.login}"></td>
+                    <td><input type="text" id="login" name="login" value="${user.login}" placeholder="Informe o login do usuário"></td>
                     <td>Cidade:</td>
                     <td><input type="text" id="cidade" name="cidade" value="${user.cidade}"/></td>
                 </tr>
 
                 <tr>
                     <td>Senha:</td>
-                    <td><input type="password" id="senha" name="senha" value="${user.senha}"></td>
+                    <td><input type="password" id="senha" name="senha" value="${user.senha}" placeholder="Informe a senha do usuário"></td>
                     <td>Estado:</td>
                     <td><input type="text" id="estado" name="estado" value="${user.estado}"/></td>
                 </tr>
